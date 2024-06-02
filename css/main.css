@@ -1,0 +1,142 @@
+/* Estilo base para el cuerpo del documento */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: black;
+    color: white;
+    transition: background-color 2s, color 2s;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* Estilo aplicado al cuerpo después de la transición */
+body.transitioned {
+    background-color: white;
+    color: black;
+}
+
+/* Contenedor del título */
+.title-container {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+
+/* Estilo base para las sílabas del título */
+.syllable {
+    width: 0;
+    opacity: 0;
+    transition: all 1s ease-out;
+}
+
+/* Estilo cuando las sílabas son visibles */
+.syllable.visible {
+    width: 50vw;
+    opacity: 1;
+}
+
+/* Estilo final para las sílabas después de reducir su tamaño */
+.syllable.final {
+    width: 20vw;
+    transition: all 1s ease-in-out;
+}
+
+/* Estilo para el subtítulo */
+.subtitle {
+    margin: 20px 0;
+}
+
+/* Contenedor de las imágenes de los personajes */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Estilo base para las imágenes de los personajes */
+.image-container img {
+    max-width: 25%;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+/* Estilo cuando las imágenes de los personajes son visibles */
+.image-container img.visible {
+    opacity: 1;
+}
+
+/* Pie de página para el botón de inicio */
+.footer-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 0;
+    transition: opacity 10s ease;
+    opacity: 1;
+    visibility: 5s hidden;
+}
+
+/* Oculta elementos */
+.hidden {
+    opacity: 0;
+    visibility: visible;
+}
+
+/* Estilo base para el botón de inicio */
+#start-button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    z-index: 10;
+}
+
+/* Estilo para el botón de inicio cuando se pasa el ratón sobre él o se enfoca */
+#start-button:hover,
+#start-button:focus {
+    background-color: #fff;
+    color: #000;
+    outline: none;
+}
+
+/* Animación para mover el fondo */
+@keyframes moveBackground {
+    100% {
+        transform: scale(3) translateX(-33%);
+    }
+    0% {
+        transform: scale(3) translateX(33%);
+    }
+}
+
+/* Estilo base para el fondo animado */
+.background,
+.background-next {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    animation: moveBackground 10s linear infinite;
+    z-index: -1;
+    transition: opacity 1s ease;
+}
+
+/* Estilo para la capa de fondo que se muestra en la transición */
+.background-next {
+    opacity: 0;
+}
